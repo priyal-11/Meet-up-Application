@@ -1,0 +1,49 @@
+<%- include('../partials/header.ejs')%>
+
+    <!--main content-->
+    <main>
+        
+        <div class="div9">
+                <h5><%= event.title%> </h5>
+            
+                <img alt="image" class="img1" src=<%= event.image%> >
+                <p class="p5"><%= event.host%></p>
+                <p class="p6"><%= event.when%></p>
+                <p class="p6"><%= event.starttime%> - <%= event.endtime%></p>
+                <p class="p6"><%= event.where%></p>
+              
+
+              <%if(user == event.userid){%>
+                <form action="/connections/edit">
+                    
+                        <button id="btn1" class="btn btn-primary" type="submit" formmethod="get" formaction="/connections/<%= event._id%>/edit">Update</button>
+                        <button id="btn3" class="btn btn-primary" type= "submit" formmethod="post" formaction="/connections/<%= event._id%>?_method=DELETE">Delete</button>
+                    
+                    </form>
+            <%}
+            else if(user!=event.userid){%>
+                <div class="div10">
+                <form>
+                        
+                            <h5 class="h5"><%= rsvps%> People are going to attend</h5>
+                       
+                        
+                        <h4 class="h4">Are you going to Attend RSVP Now</h4>
+                        <button class="btn btn-success" type="submit" formmethod="post" formaction="/connections/<%= event._id%>/rsvp" name="rsvp" value="YES">Yes</button>
+                        <button class="btn btn-danger" type= "submit" formmethod="post" formaction="/connections/<%= event._id%>/rsvp" name="rsvp" value="NO">No</button>
+                        <button class="btn btn-primary" type= "submit" formmethod="post" formaction="/connections/<%= event._id%>/rsvp" name="rsvp" value="MAYBE">Maybe</button>
+                    </form>
+                    </div>
+            <%}%>
+        </div>
+                
+        
+        <section class="section2">
+            <h5>Details</h5>
+            <p class="p3"><%= event.details%></p>
+        </section>
+    </main>  
+
+    <!--main content end--> 
+
+    <%- include('../partials/footer.ejs')%>   

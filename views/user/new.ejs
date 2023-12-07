@@ -1,0 +1,15 @@
+<%- include('../partials/header.ejs')%>
+<br>
+    <form action="/users" method="POST">
+        <label class="new-label" for="firstName">First Name</label><br>
+        <input class="new-input" type="text" id="firstName" name="firstName" required><br><br>
+        <label class="new-label" for="lastName">Last Name</label><br>
+        <input class="new-input"  type="text" id="lastName" name="lastName" required><br><br>
+        <label class="new-label" for="email">Email</label><br>
+        <input class="new-input"  type="email" id="email" name="email" required><br><br>
+        <label class="new-label" for="password">Password</label><br>
+        <input class="new-input"  type="password" id="password" name="password" minlength="8" maxlength="64" required><br><br>
+        <button class="new-btn">Sign Up</button><br>
+    </form>
+    
+<%- include('../partials/footer.ejs')%>

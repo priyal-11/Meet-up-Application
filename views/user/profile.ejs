@@ -1,0 +1,64 @@
+<%- include('../partials/header.ejs')%>
+
+<h2><%= user.firstName%>'s Connections</h2>
+
+<%if(events.length){%>
+    
+        
+        <table class="table1">
+            <tr>
+                <th class="th1">Connection</th>
+                <th class="th1">Category</th>
+                <th class="th1">Actions</th>
+            </tr>
+
+           <%events.forEach(event=>{%>
+                <tr>
+                    <td class="td1"><%=event.title%></td>
+                    <td class="td1"><%=event.topic%></td>
+                    <td class="td1"><form action="/connections/edit">
+                       
+                            <button class="btn btn-primary" type="submit" formmethod="get" formaction="/connections/<%= event._id%>/edit">Update</button>
+                            <button class="btn btn-primary" type= "submit" formmethod="post" formaction="/connections/<%= event._id%>?_method=DELETE">Delete</button>
+                        
+                        </form></td>
+                </tr>
+                <% })%>
+        </table>
+   
+<%}
+else{%>
+    <p>You have not created any events</p>
+<%}%>
+
+<h2><%= user.firstName%>'s RSVP's</h2>
+
+<%if(rsvps.length){%>
+    
+        
+    <table class="table1">
+        <tr>
+            <th class="th1">Connection</th>
+            <th class="th1">Category</th>
+            <th class="th1">Going?</th>
+        </tr>
+           
+       <%rsvps.forEach(rsvp=>{%>
+            <tr>
+                <td class="td1" ><%=rsvp.connection.title%></td>
+                <td class="td1"><%=rsvp.connection.topic%></td>
+                <td class="td1"><%=rsvp.rsvp%></td>
+            </tr>
+            <% })%>
+    </table>
+
+<%}
+   
+else{%>
+<p>You have not rsvped any events</p>
+<%}%>
+ 
+
+<!-- <h3><%= user.firstName%>, RSVPs</h3> -->
+
+<%- include('../partials/footer.ejs')%>

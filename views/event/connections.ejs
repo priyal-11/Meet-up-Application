@@ -1,0 +1,32 @@
+ <%- include('../partials/header.ejs')%>
+    
+    <!--main content-->
+     <main>
+        <section>
+            <%for(let i=0; i < topic.length; i++){ %>
+            <h5><%= topic[i] %></h5>
+            <ul>
+                <% if(events.length){ %>
+                    <%events.forEach(event => { %>
+                        <%if (topic[i] === event.topic){ %>
+                <li> 
+                    <a class="a3" href="connections/<%= event.id%>" value={this}> <%= event.title%></a><br>
+                </li>
+                        <%} 
+                    });
+                }%> 
+                </ul>    
+            <%}%>
+            <%if(events.length === 0){%>
+                <p>There are no events to display</p>
+            <%}%>
+            
+           
+        </section>
+    </main>
+   
+    
+    <!--main content end
+
+
+<%- include('../partials/footer.ejs')%>   
